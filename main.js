@@ -74,7 +74,6 @@ Array.from(input).forEach((element) => {
 })
 
 function repeat() {    // setup canvas element
-    console.log(editOrder);
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
@@ -85,14 +84,31 @@ function repeat() {    // setup canvas element
     // calc data points
     calculate(editOrder, a1, a2, so, sa, sh);
 
-
     // calc vertex pos
-    p1 = [100,100];
-    p3 = [300,300];
-    p2 = [100,300];
+    p1 = [100,300];
+    p2 = [400,100];
+    p3 = [400,300];
 
     // draw triangle
     drawTriangle(ctx, p1, p2, p3);
+
+    // move textbox
+    var yOffset = 0;
+
+    a1.style.left = `${p1[0] - a1.getBoundingClientRect().width / 2}px`;
+    a1.style.top = `${p1[1] - a1.getBoundingClientRect().height / 2 + yOffset}px`;
+
+    a2.style.left = `${p2[0] - a1.getBoundingClientRect().width / 2}px`;
+    a2.style.top = `${p2[1] - a1.getBoundingClientRect().height / 2 + yOffset}px`;
+    
+    so.style.left = `${p2[0]-(p2[0]-p3[0])/2 - a1.getBoundingClientRect().width / 2}px`;
+    so.style.top = `${p2[1]-(p2[1]-p3[1])/2 - a1.getBoundingClientRect().height / 2 + yOffset}px`;
+
+    sa.style.left = `${p1[0]-(p1[0]-p3[0])/2 - a1.getBoundingClientRect().width / 2}px`;
+    sa.style.top = `${p1[1]-(p1[1]-p3[1])/2 - a1.getBoundingClientRect().height / 2 + yOffset}px`;
+
+    sh.style.left = `${p1[0]-(p1[0]-p2[0])/2 - a1.getBoundingClientRect().width / 2}px`;
+    sh.style.top = `${p1[1]-(p1[1]-p2[1])/2 - a1.getBoundingClientRect().height / 2 + yOffset}px`;
 }
 
 // =================================================================
