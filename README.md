@@ -1,0 +1,2 @@
+# trigCalc
+calculator for triangle
